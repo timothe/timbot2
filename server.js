@@ -23,7 +23,94 @@ controller.setupWebserver(port, function (err, webserver) {
 })
 
 controller.hears(['hello', 'hi'], 'message_received', function (bot, message) {
-  bot.reply(message, 'Hello!')
+	controller.storage.users.get(message.user, function(err, user) {
+        if (user && user.welcomed) {
+	        bot.reply(message, 'Hello again')
+        } else {
+            controller.storage.users.get(message.user, function(err, user) {
+                if (!user) {
+                    user = {
+                        id: message.user,
+                    };
+                }
+                user.welcomed = true;
+	            controller.storage.users.save(user, function(err, id) {
+	                bot.reply(message, 'Hi! I\'m Timbot. I\'m Tim\'s programmed alter-ego :) I\'m here to tell you more about him.')
+	                bot.reply(message, 'What do you want to know?')
+	            });
+            });
+        }
+    });	
+
+controller.hears(['his life', 'tim\'s life', 'his universe'], 'message_received', function (bot, message) {
+	bot.reply(message, 'Wow that is broad... Can we be more precise? Experience, education, hobbies?...')
+});
+
+controller.hears(['his experience', 'tim\'s experience'], 'message_received', function (bot, message) {
+	bot.reply(message, 'He worked 8 years in Paris in agencies and 2 years in London in tech companies.')
+	bot.reply(message, {
+		attachment: {
+		  type: 'template',
+		  payload: {
+		    template_type: 'button',
+		    text: 'Do you want to know more about his experience in...',
+		    buttons: [
+		      {
+		        type: 'postback',
+		        title: 'London',
+		        payload: 'show_london'
+		      },
+		      {
+		        type: 'postback',
+		        title: 'Paris',
+		        payload: 'show_paris'
+		      }
+		    ]
+		  }
+		}
+	})
+
+});
+
+
+/*
+    "EXPERIENCE": "He worked 8 years in PARIS in agencies and 2 years in LONDON in tech companies.",
+    "PARIS": "Tim began his career in 2006 with 6 months of internship as a project manager at MRM Worldwide, then at TBWA from 2006 to 2008 as a Project Manager then Technical Project Manager, and ~1 year at OGILVY. He then became an entrepreneur and built MILKY end of 2009. The company was bought in 2011, he left the project and built MUSTANG, which he ran 'till 2014.",
+    "LONDON": "He was hired by CRITEO in 2014 as a Senior Technical Solutions Engineer. In 2016 he left the company to be hired at SMARTFOCUS as a Presales Consultant.",
+    "MRM" : "MRM Worldwide is part of the McCann Erickson ad agencies group. This division is specialized in CRM communication with Nestlé, Gemey and Opel as their key clients. Tim worked on Care, Mastercard, Gaz de France, and Eurofactor",
+    "TBWA" : "TBWA interactive is part of the TBWA ad agencies group. This division is specialized in digital communication. The 1st year was focusing on project management, then he asked to switch to Technical Project Management. Tim did a lot of different things there: concept design, development, technical consulting... on great clients: ADIDAS, Arcelor Mittal, BNP Paribas, Michelin, McDonald’s, Amnesty, SNCF",
+    "OGILVY" : "Ogilvy One is part of the Ogilvy ad agencies group. This department is specialized in digital communication, working closely with Ogilvy & Mather. Tim began as the sole Project Manager able to work on both Flash and PHP/HTML projects. He then switched to the coordination of technical efforts for IBM EMEA at the Ogilvy & Mather division to adapt US campaigns to the EMEA market",
+    "MILKY" : "Web agency leading brands to perform successful online communication. The great Milky adventure began in 2009 with 3 other business partners. He was the Head of project management, also doing Business development and People Management. The key clients were: ADIDAS, L’Oréal, Bourjois (FR, UK, CA), Etam, Longchamp, Nivea, Sarenza, Warner Bros, EMI, Voyages SNCF. A company was interested in buying the agency in 2011. Tim decided to sell and go, while the partners and employees stayed.",
+    "MUSTANG" : "After selling his MILKY shares to the buyer Tim immediately created Mustang Interactive, another web developement agency. Some clients followed him in the deal, and the company grew 'till 2014, when Tim decided to close it and move to LONDON",
+    "CRITEO" : "Criteo helps advertisers generate more sales through personalized performance advertising at a global scale. Tim had a very busy time there, where he was analysing the feasibility of implementations of the products for new clients, work closely with the technical contacts to initiate and follow-up successful campaigns, advise on campaigns optimisation by building best practices together with local and global Technical Solutions teams, create, manage and advise for advertisers’ campaigns on: Desktop, Mobile web, In-App and Email, create, manage and debug publishers’ networks (RTA, RTB, Passback, Cookie targeting), building Vertica queries, working closely with the TS UK Tier 1 team manager to review and interview potential TS candidates and organise and take part of new team members’ training. Tim talked with people from some big name companies on a day-to-day basis: M&S EMEA, John Lewis, Debenhams EMEA, House of Fraser, Gap / Banana Republic, Hotels.com EMEA, Expedia EMEA, Hostel World WW, HomeAway WW, Monarch, Gumtree, Kijiji, EON",
+    "SMARTFOCUS" : "SmartFocus enhances digital strategies for businesses with The Message Cloud, a powerful platform featuring big data-fuelled insights and enabling smart multi- channel campaigns. Tim is pretty new there but he already met all the expectations of this very different company and job. His role consists of teaming up with sales people and meeting clients in Europe (France, Belgium, Switzerland, UK) to demonstrate the abilities of the platform, create demo environments and dummy websites to contextualize the pitch according to the client’s needs, answer RFPs / RFIs with the help of the Professional Services team and support the new Presales team by building a knowledge base and core materials",
+
+    "EDUCATION" : "He studied at the University of Toulon (France) and graduated with a Master’s Degree \"Internet and Multimedia Engineering\" in 2006. This curriculum is proposing a variety of classes about the professions around internet: Development, Design, Marketing, Law, etc. but also filming: Writing, Photography, Storyboard, Montage, etc. At the end of it the idea is to be ready to become a Project Manager",
+
+    "HOBBIES" : "Tim is a fan of Internet in general, science and technology. He spends loads of time watching qualitative TV series or organising his next trip abroad. Sports-wise, he's regularly practicing Muay Thai after years of the a classic jogging / weight lifting routine. He's a big fan of cars and motorbikes too and got the chance to participate in some races in the past",
+
+	"EMEA": "EMEA means Europe, Middle East and Africa. It was not supposed to be a keyword really :)",
+	"EON": "EON is not a keyword, it's an energy company",
+	"RFP": "Request For Proposal: a set of basic questions the supplier should answer to to ensure they are keen to answer the client's needs",
+	"RFI": "Request For Information: a set of basic questions the supplier should answer to to ensure they are keen to answer the client's needs",
+	"EMI": "EMI is not really a keyword",
+	"ADIDAS": "ADIDAS is not really a keyword",
+	"BNP": "Banque Nationale de Paris, but it's not really a keyword",
+	"SNCF": "Société Nationale des Chemins de fer Français (the French rail company), but it's not really a keyword",
+	"TS": "TS means Technical Solutions",
+	"CRM": "Customer Relationship Management, but I thought you would know that?",
+
+    "YOU SUCK": "I think you have me confused with Vacuum-bot.",
+    "FUCK YOU": "Well that's not nice...",
+
+    "TU PARLES FRANCAIS ?": "Oui bien sûr : café, croissant.",
+*/
+
+	
+	
+
+  
+/*
   bot.reply(message, 'I want to show you something')
   bot.reply(message, {
     attachment: {
@@ -46,7 +133,8 @@ controller.hears(['hello', 'hi'], 'message_received', function (bot, message) {
       }
     }
   })
-})
+*/
+
 
 controller.on('facebook_postback', function (bot, message) {
   switch (message.payload) {
@@ -69,6 +157,12 @@ controller.on('facebook_postback', function (bot, message) {
           }
         }
       })
+      break
+    case 'show_london':
+      bot.reply(message, 'He was hired by CRITEO in 2014 as a Senior Technical Solutions Engineer. In 2016 he left the company to be hired at SMARTFOCUS as a Presales Consultant.')
+      break
+    case 'show_paris':
+      bot.reply(message, 'Tim began his career in 2006 with 6 months of internship as a project manager at MRM Worldwide, then at TBWA from 2006 to 2008 as a Project Manager then Technical Project Manager, and ~1 year at Ogilvy. He then became an entrepreneur and built Milky end of 2009. The company was bought in 2011, he left the project and built Mustang, which he ran \'till 2014.')
       break
   }
 })
