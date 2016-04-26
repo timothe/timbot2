@@ -23,10 +23,14 @@ controller.setupWebserver(port, function (err, webserver) {
   })
 })
 
-controller.hears(['hello', 'hi'], 'message_received', function (bot, message) {
+controller.hears(['hello'], 'message_received', function (bot, message) {
 	controller.storage.users.get(message.user, function(err, user) {
         if (user && user.welcomed) {
-	        bot.reply(message, 'Hello again')
+	        if (user && user.name) {
+	            bot.reply(message, 'Hello again ' + user.name + '...');
+	        } else {
+	            bot.reply(message, 'Hello again');
+	        }
         } else {
             controller.storage.users.get(message.user, function(err, user) {
                 if (!user) {
@@ -286,8 +290,7 @@ controller.hears(['uptime', 'identify yourself', 'who are you', 'what is your na
         var uptime = formatUptime(process.uptime());
 
         bot.reply(message,
-            ':robot_face: I am a bot named <@' + bot.identity.name +
-             '>. I have been running for ' + uptime + ' on ' + hostname + '.');
+            ':robot_face: I am a bot named Timbot. I have been running for ' + uptime + ' on ' + hostname + '.');
     });
 
 
