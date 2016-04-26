@@ -41,6 +41,7 @@ controller.hears(['hello', 'hi'], 'message_received', function (bot, message) {
             });
         }
     });	
+});
 
 controller.hears(['his life', 'tim\'s life', 'his universe'], 'message_received', function (bot, message) {
 	bot.reply(message, 'Wow that is broad... Can we be more precise? Experience, education, hobbies?...')
@@ -165,7 +166,7 @@ controller.on('facebook_postback', function (bot, message) {
       bot.reply(message, 'Tim began his career in 2006 with 6 months of internship as a project manager at MRM Worldwide, then at TBWA from 2006 to 2008 as a Project Manager then Technical Project Manager, and ~1 year at Ogilvy. He then became an entrepreneur and built Milky end of 2009. The company was bought in 2011, he left the project and built Mustang, which he ran \'till 2014.')
       break
   }
-})
+});
 
 controller.hears(['call me (.*)', 'my name is (.*)'], 'message_received', function(bot, message) {
     var name = message.match[1];
