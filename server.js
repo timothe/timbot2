@@ -1,4 +1,5 @@
 var Botkit = require('botkit')
+var os = require('os')
 
 var accessToken = process.env.FACEBOOK_PAGE_ACCESS_TOKEN
 var verifyToken = process.env.FACEBOOK_VERIFY_TOKEN
@@ -159,10 +160,10 @@ controller.on('facebook_postback', function (bot, message) {
         }
       })
       break
-    case 'show_london':
+    case 'show_paris':
       bot.reply(message, 'He was hired by CRITEO in 2014 as a Senior Technical Solutions Engineer. In 2016 he left the company to be hired at SMARTFOCUS as a Presales Consultant.')
       break
-    case 'show_paris':
+    case 'show_london':
       bot.reply(message, 'Tim began his career in 2006 with 6 months of internship as a project manager at MRM Worldwide, then at TBWA from 2006 to 2008 as a Project Manager then Technical Project Manager, and ~1 year at Ogilvy. He then became an entrepreneur and built Milky end of 2009. The company was bought in 2011, he left the project and built Mustang, which he ran \'till 2014.')
       break
   }
@@ -194,7 +195,7 @@ controller.hears(['what is my name', 'who am i'], 'message_received', function(b
                     convo.ask('What should I call you?', function(response, convo) {
                         convo.ask('You want me to call you `' + response.text + '`?', [
                             {
-                                pattern: 'yes',
+                                pattern: bot.utterances.yes,
                                 callback: function(response, convo) {
                                     // since no further messages are queued after this,
                                     // the conversation will end naturally with status == 'completed'
@@ -202,7 +203,7 @@ controller.hears(['what is my name', 'who am i'], 'message_received', function(b
                                 }
                             },
                             {
-                                pattern: 'no',
+                                pattern: bot.utterances.no,
                                 callback: function(response, convo) {
                                     // stop the conversation. this will cause it to end with status == 'stopped'
                                     convo.stop();
