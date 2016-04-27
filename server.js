@@ -59,7 +59,7 @@ controller.hears(['his life', 'tim\'s life', 'his universe'], 'message_received'
 controller.hears(['his experience', 'tim\'s experience'], 'message_received', function (bot, message) {
 	bot.startConversation(message,function(err,convo) {	
 		convo.say('He worked 8 years in Paris in agencies and 2 years in London in tech companies')
-		convo.say(message, {
+		convo.say({
 			attachment: {
 			  type: 'template',
 			  payload: {
@@ -92,66 +92,66 @@ controller.hears(['ogilvy'], 'message_received', function (bot, message) {
 
 controller.hears(['tbwa'], 'message_received', function (bot, message) {
 	bot.startConversation(message,function(err,convo) {	
-		convo.say(message, 'TBWA interactive is part of the TBWA ad agencies group. This division is specialized in digital communication')
-		convo.say(message, 'On his 1st year Tim was focusing on Project Management, then he asked to switch to Technical Project Management')
-		convo.say(message, 'He did a lot of different things there: concept design, development, technical consulting')
-		convo.say(message, '... and worked on great clients: ADIDAS, Arcelor Mittal, BNP Paribas, Michelin, McDonald’s, Amnesty, SNCF...')
+		convo.say('TBWA interactive is part of the TBWA ad agencies group. This division is specialized in digital communication')
+		convo.say('On his 1st year Tim was focusing on Project Management, then he asked to switch to Technical Project Management')
+		convo.say('He did a lot of different things there: concept design, development, technical consulting')
+		convo.say('...and worked on great clients: ADIDAS, Arcelor Mittal, BNP Paribas, Michelin, McDonald’s, Amnesty, SNCF...')
 	});
 
 });
 
 controller.hears(['milky'], 'message_received', function (bot, message) {
 	bot.startConversation(message,function(err,convo) {	
-		convo.say(message, 'Milky is a web agency leading brands to perform successful online communication')
-		convo.say(message, 'The great Milky adventure began in 2009 with 3 other business partners. Tim was the Head of project management, also doing Business development and People Management')
-		convo.say(message, 'The key clients were: ADIDAS, L’Oréal, Bourjois (FR, UK, CA), Etam, Longchamp, Nivea, Sarenza, Warner Bros, EMI, Voyages SNCF')
-		convo.say(message, 'A company was interested in buying the agency in 2011. Tim decided to sell and go, while the partners and employees stayed')
-		convo.say(message, 'Tim created Mustang a short time after')
+		convo.say('Milky is a web agency leading brands to perform successful online communication')
+		convo.say('The great Milky adventure began in 2009 with 3 other business partners. Tim was the Head of project management, also doing Business development and People Management')
+		convo.say('The key clients were: ADIDAS, L’Oréal, Bourjois (FR, UK, CA), Etam, Longchamp, Nivea, Sarenza, Warner Bros, EMI, Voyages SNCF')
+		convo.say('A company was interested in buying the agency in 2011. Tim decided to sell and go, while the partners and employees stayed')
+		convo.say('Tim created Mustang a short time after')
 	});
 });
 
 controller.hears(['mustang'], 'message_received', function (bot, message) {
 	bot.startConversation(message,function(err,convo) {	
-		convo.say(message, 'After selling his Milky shares, Tim immediately created Mustang Interactive, another web developement agency')
-		convo.say(message, 'Some clients followed him in the deal, and the company grew \'till 2014, when Tim decided to close it and move to London')	
+		convo.say('After selling his Milky shares, Tim immediately created Mustang Interactive, another web developement agency')
+		convo.say('Some clients followed him in the deal, and the company grew \'till 2014, when Tim decided to close it and move to London')	
 	})
 })
 
 controller.hears(['criteo'], 'message_received', function (bot, message) {
 	bot.startConversation(message,function(err,convo) {	
-		convo.say(message, 'Criteo helps advertisers generate more sales through personalized performance advertising (retargeting) at a global scale')
-		convo.say(message, 'Tim had a very busy time there, where he was doing the onboarding for new clients, follow-up to debug and optimise existing campaigns...')
-		convo.say(message, 'review and interview potential TS candidates')
-		convo.say(message, 'train newcomers')
-		convo.say(message, 'He worked on Desktop, Mobile web, In-App and Email advertising but also on publishers’ networks using different technologies (RTA, RTB, Passback, Cookie targeting)')
-		convo.say(message, 'Tim got in touch on a day-to-day basis with the worldwide teams of Marks & Spencer, John Lewis, Debenhams, House of Fraser, Gap / Banana Republic, Hotels.com, Expedia, Hostel World, HomeAway, Monarch, Gumtree, Kijiji, EON, ...')
+		convo.say('Criteo helps advertisers generate more sales through personalized performance advertising (retargeting) at a global scale')
+		convo.say('Tim had a very busy time there, where he was doing the onboarding for new clients, follow-up to debug and optimise existing campaigns...')
+		convo.say('review and interview potential TS candidates')
+		convo.say('train newcomers')
+		convo.say('He worked on Desktop, Mobile web, In-App and Email advertising but also on publishers’ networks using different technologies (RTA, RTB, Passback, Cookie targeting)')
+		convo.say('Tim got in touch on a day-to-day basis with the worldwide teams of Marks & Spencer, John Lewis, Debenhams, House of Fraser, Gap / Banana Republic, Hotels.com, Expedia, Hostel World, HomeAway, Monarch, Gumtree, Kijiji, EON, ...')
 	})
 })
 
 controller.hears(['smartfocus'], 'message_received', function (bot, message) {
 	bot.startConversation(message,function(err,convo) {	
-		convo.say(message, 'SmartFocus enhances digital strategies for businesses with The Message Cloud, a powerful platform featuring big data-fuelled insights and enabling smart multi- channel campaigns')
-		convo.say(message, 'Tim is pretty new there but he already met all the expectations of this different company and job')
-		convo.say(message, 'His role consists of teaming up with sales people and meeting clients in Europe to demonstrate the abilities of the platform, create demo environments and dummy websites to contextualize the pitch according to the client’s needs')
-		convo.say(message, 'But also answer RFPs / RFIs with the help of the Professional Services team and support the new Presales team by building a knowledge base and core materials')
+		convo.say('SmartFocus enhances digital strategies for businesses with The Message Cloud, a powerful platform featuring big data-fuelled insights and enabling smart multi- channel campaigns')
+		convo.say('Tim is pretty new there but he already met all the expectations of this different company and job')
+		convo.say('His role consists of teaming up with sales people and meeting clients in Europe to demonstrate the abilities of the platform, create demo environments and dummy websites to contextualize the pitch according to the client’s needs')
+		convo.say('But also answer RFPs / RFIs with the help of the Professional Services team and support the new Presales team by building a knowledge base and core materials')
 	})
 })
 
 controller.hears(['education', 'school', 'masters', 'degree'], 'message_received', function (bot, message) {
 	bot.startConversation(message,function(err,convo) {	
-		convo.say(message, 'Tim studied at the University of Toulon (France) and graduated with a Master’s Degree \"Internet and Multimedia Engineering\" in 2006')
-		convo.say(message, 'This curriculum is proposing a variety of classes for the professions around internet: Development, Design, Marketing, Law, etc. but also filming: Writing, Photography, Storyboard, Montage, etc')
-		convo.say(message, 'The objective is to become a skilful Project Manager')
+		convo.say('Tim studied at the University of Toulon (France) and graduated with a Master’s Degree \"Internet and Multimedia Engineering\" in 2006')
+		convo.say('This curriculum is proposing a variety of classes for the professions around internet: Development, Design, Marketing, Law, etc. but also filming: Writing, Photography, Storyboard, Montage, etc')
+		convo.say('The objective is to become a skilful Project Manager')
 	});
 })
 
 controller.hears(['hobbies'], 'message_received', function (bot, message) {
 	bot.startConversation(message,function(err,convo) {	
-		convo.say(message, 'Tim is a fan of Internet culture in general, technology, and science')
-		convo.say(message, 'He spends loads of time watching (qualitative) TV series and organising his next trip abroad')
-		convo.say(message, 'Sports-wise, he\'s regularly practicing Muay Thai after years of the a classic jogging / weight lifting routine')
-		convo.say(message, 'He\'s a big fan of cars and motorbikes too and got the chance to participate in some races in the past')
-		convo.say(message, 'Well, among other cool stories ;)')
+		convo.say('Tim is a fan of Internet culture in general, technology, and science')
+		convo.say('He spends loads of time watching (qualitative) TV series and organising his next trip abroad')
+		convo.say('Sports-wise, he\'s regularly practicing Muay Thai after years of the a classic jogging / weight lifting routine')
+		convo.say('He\'s a big fan of cars and motorbikes too and got the chance to participate in some races in the past')
+		convo.say('Well, among other cool stories ;)')
 	});
 })
 
@@ -184,7 +184,7 @@ controller.on('facebook_postback', function (bot, message) {
   switch (message.payload) {
     case 'show_london':
 		bot.startConversation(message,function(err,convo) {	
-		  convo.say(message, {
+		  convo.say({
 		    attachment: {
 		      type: 'image',
 		      payload: {
@@ -192,12 +192,12 @@ controller.on('facebook_postback', function (bot, message) {
 		      }
 		    }
 		  })
-		  convo.say(message, 'He was hired by Criteo in 2014 as a Senior Technical Solutions Engineer. In 2016 he left the company to be hired at SmartFocus as a Presales Consultant')
+		  convo.say('He was hired by Criteo in 2014 as a Senior Technical Solutions Engineer. In 2016 he left the company to be hired at SmartFocus as a Presales Consultant')
 		});
         break
     case 'show_paris':
 		bot.startConversation(message,function(err,convo) {	
-		  convo.say(message, {
+		  convo.say({
 		    attachment: {
 		      type: 'image',
 		      payload: {
@@ -205,10 +205,10 @@ controller.on('facebook_postback', function (bot, message) {
 		      }
 		    }
 		  })
-		  convo.say(message, 'Tim began his career in 2006 with 6 months of internship as a project manager at MRM Worldwide')
-		  convo.say(message, '...then at TBWA from 2006 to 2008 as a Project Manager and Technical Project Manager')
-		  convo.say(message, '...and ~1 year at Ogilvy again as a Technical Project Manager.')
-		  convo.say(message, 'He then became an entrepreneur and built Milky at the end of 2009. The company was bought in 2011, he left the project and built Mustang, which he ran \'till 2014')
+		  convo.say('Tim began his career in 2006 with 6 months of internship as a project manager at MRM Worldwide')
+		  convo.say('...then at TBWA from 2006 to 2008 as a Project Manager and Technical Project Manager')
+		  convo.say('...and ~1 year at Ogilvy again as a Technical Project Manager.')
+		  convo.say('He then became an entrepreneur and built Milky at the end of 2009. The company was bought in 2011, he left the project and built Mustang, which he ran \'till 2014')
 		});
         break
   }
