@@ -80,6 +80,86 @@ controller.hears(['his experience', 'tim\'s experience'], 'message_received', fu
 		}
 	})
 });
+
+controller.hears(['ogilvy'], 'message_received', function (bot, message) {
+	bot.reply(message, 'MRM Worldwide is part of the McCann Erickson ad agencies group. This division is specialized in CRM communication with Nestlé, Gemey and Opel as their key clients')
+	bot.reply(message, 'Tim was a Project Manager there, working on Care, Mastercard, Gaz de France, and Eurofactor')
+});
+
+controller.hears(['tbwa'], 'message_received', function (bot, message) {
+	bot.reply(message, 'TBWA interactive is part of the TBWA ad agencies group. This division is specialized in digital communication')
+	bot.reply(message, 'On his 1st year Tim was focusing on Project Management, then he asked to switch to Technical Project Management')
+	bot.reply(message, 'He did a lot of different things there: concept design, development, technical consulting')
+	bot.reply(message, '... and worked on great clients: ADIDAS, Arcelor Mittal, BNP Paribas, Michelin, McDonald’s, Amnesty, SNCF...')
+});
+
+controller.hears(['milky'], 'message_received', function (bot, message) {
+	bot.reply(message, 'Milky is a web agency leading brands to perform successful online communication')
+	bot.reply(message, 'The great Milky adventure began in 2009 with 3 other business partners. Tim was the Head of project management, also doing Business development and People Management')
+	bot.reply(message, 'The key clients were: ADIDAS, L’Oréal, Bourjois (FR, UK, CA), Etam, Longchamp, Nivea, Sarenza, Warner Bros, EMI, Voyages SNCF')
+	bot.reply(message, 'A company was interested in buying the agency in 2011. Tim decided to sell and go, while the partners and employees stayed')
+	bot.reply(message, 'Tim created Mustang a short time after')
+});
+
+controller.hears(['mustang'], 'message_received', function (bot, message) {
+	bot.reply(message, 'After selling his Milky shares, Tim immediately created Mustang Interactive, another web developement agency')
+	bot.reply(message, 'Some clients followed him in the deal, and the company grew \'till 2014, when Tim decided to close it and move to London')
+});
+
+controller.hears(['criteo'], 'message_received', function (bot, message) {
+	bot.reply(message, 'Criteo helps advertisers generate more sales through personalized performance advertising (retargeting) at a global scale')
+	bot.reply(message, 'Tim had a very busy time there, where he was doing the onboarding for new clients, follow-up to debug and optimise existing campaigns...')
+	bot.reply(message, 'review and interview potential TS candidates')
+	bot.reply(message, 'train newcomers')
+	bot.reply(message, 'He worked on Desktop, Mobile web, In-App and Email advertising but also on publishers’ networks using different technologies (RTA, RTB, Passback, Cookie targeting)')
+	bot.reply(message, 'Tim got in touch on a day-to-day basis with the worldwide teams of Marks & Spencer, John Lewis, Debenhams, House of Fraser, Gap / Banana Republic, Hotels.com, Expedia, Hostel World, HomeAway, Monarch, Gumtree, Kijiji, EON, ...')
+});
+
+controller.hears(['smartfocus'], 'message_received', function (bot, message) {
+	bot.reply(message, 'SmartFocus enhances digital strategies for businesses with The Message Cloud, a powerful platform featuring big data-fuelled insights and enabling smart multi- channel campaigns')
+	bot.reply(message, 'Tim is pretty new there but he already met all the expectations of this different company and job')
+	bot.reply(message, 'His role consists of teaming up with sales people and meeting clients in Europe to demonstrate the abilities of the platform, create demo environments and dummy websites to contextualize the pitch according to the client’s needs')
+	bot.reply(message, 'But also answer RFPs / RFIs with the help of the Professional Services team and support the new Presales team by building a knowledge base and core materials')
+});
+
+controller.hears(['education', 'school', 'masters', 'degree'], 'message_received', function (bot, message) {
+	bot.reply(message, 'Tim studied at the University of Toulon (France) and graduated with a Master’s Degree \"Internet and Multimedia Engineering\" in 2006')
+	bot.reply(message, 'This curriculum is proposing a variety of classes for the professions around internet: Development, Design, Marketing, Law, etc. but also filming: Writing, Photography, Storyboard, Montage, etc')
+	bot.reply(message, 'The objective is to become a skilful Project Manager')
+})
+
+controller.hears(['hobbies'], 'message_received', function (bot, message) {
+	bot.reply(message, 'Tim is a fan of Internet culture in general, technology, and science')
+	bot.reply(message, 'He spends loads of time watching (qualitative) TV series and organising his next trip abroad')
+	bot.reply(message, 'Sports-wise, he\'s regularly practicing Muay Thai after years of the a classic jogging / weight lifting routine')
+	bot.reply(message, 'He\'s a big fan of cars and motorbikes too and got the chance to participate in some races in the past')
+	bot.reply(message, 'Well, among other cool stories ;)')
+})
+
+controller.hears(['emea'], 'message_received', function (bot, message) {
+	bot.reply(message, 'EMEA means Europe, Middle East and Africa :)')
+})
+
+controller.hears(['rfp', 'rfi'], 'message_received', function (bot, message) {
+	bot.reply(message, 'RFP/RFI, Request For Proposal/Information: a set of basic questions the supplier should answer to to ensure they are keen to answer the client\'s needs')
+})
+
+controller.hears(['sncf'], 'message_received', function (bot, message) {
+	bot.reply(message, 'Société Nationale des Chemins de fer Français (the French rail company) :)')
+})
+
+controller.hears(['suck'], 'message_received', function (bot, message) {
+	bot.reply(message, 'I think you have me confused with Vacuum-bot')
+})
+
+controller.hears(['fuck', 'twat', 'cunt', 'bastard', 'dick', 'pute', 'putain'], 'message_received', function (bot, message) {
+	bot.reply(message, '😒')
+})
+
+controller.hears(['francais'], 'message_received', function (bot, message) {
+	bot.reply(message, 'Désolé, je ne parle pas encore français :(')
+})
+
   
 controller.on('facebook_postback', function (bot, message) {
   switch (message.payload) {
@@ -103,7 +183,10 @@ controller.on('facebook_postback', function (bot, message) {
           }
         }
       })
-      bot.reply(message, 'Tim began his career in 2006 with 6 months of internship as a project manager at MRM Worldwide, then at TBWA from 2006 to 2008 as a Project Manager then Technical Project Manager, and ~1 year at Ogilvy. He then became an entrepreneur and built Milky end of 2009. The company was bought in 2011, he left the project and built Mustang, which he ran \'till 2014')
+      bot.reply(message, 'Tim began his career in 2006 with 6 months of internship as a project manager at MRM Worldwide')
+      bot.reply(message, '...then at TBWA from 2006 to 2008 as a Project Manager and Technical Project Manager')
+      bot.reply(message, '...and ~1 year at Ogilvy again as a Technical Project Manager.')
+      bot.reply(message, 'He then became an entrepreneur and built Milky at the end of 2009. The company was bought in 2011, he left the project and built Mustang, which he ran \'till 2014')
       break
   }
 });
