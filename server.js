@@ -56,30 +56,28 @@ controller.hears(['his life', 'tim\'s life', 'his universe'], 'message_received'
 	bot.reply(message, 'Wow that is broad... Can we be more precise? Experience, education, hobbies?...')
 });
 
-controller.hears(['his experience', 'tim\'s experience'], 'message_received', function (bot, message) {
-	bot.startConversation(message,function(err,convo) {	
-		convo.say('He worked 8 years in Paris in agencies and 2 years in London in tech companies')
-		convo.say({
-			attachment: {
-			  type: 'template',
-			  payload: {
-			    template_type: 'button',
-			    text: 'Do you want to know more about his experience in...',
-			    buttons: [
-			      {
-			        type: 'postback',
-			        title: 'London',
-			        payload: 'show_london'
-			      },
-			      {
-			        type: 'postback',
-			        title: 'Paris',
-			        payload: 'show_paris'
-			      }
-			    ]
-			  }
-			}
-		})
+controller.hears(['his experience', 'tim\'s experience', 'work'], 'message_received', function (bot, message) {
+	bot.reply('He worked 8 years in Paris in agencies and 2 years in London in tech companies')
+	bot.reply({
+		attachment: {
+		  type: 'template',
+		  payload: {
+		    template_type: 'button',
+		    text: 'Do you want to know more about his experience in...',
+		    buttons: [
+		      {
+		        type: 'postback',
+		        title: 'London',
+		        payload: 'show_london'
+		      },
+		      {
+		        type: 'postback',
+		        title: 'Paris',
+		        payload: 'show_paris'
+		      }
+		    ]
+		  }
+		}
 	})
 })
 
