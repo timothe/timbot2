@@ -81,6 +81,25 @@ controller.hears(['his experience', 'tim\'s experience', 'work'], 'message_recei
 	})
 })
 
+controller.hears(['contact me', 'get in touch', 'email', 'message'], 'message_received', function (bot, message) {
+	bot.reply(message, {
+		attachment: {
+		  type: 'template',
+		  payload: {
+		    template_type: 'button',
+		    text: 'Do you want to get in touch? Click on the button below and drop him a line',
+		    buttons: [
+		      {
+		        type: 'web_url',
+		        title: 'timothe.leroy@gmail.com',
+		        url: 'mailto:timothe.leroy@gmail.com'
+		      }
+		    ]
+		  }
+		}
+	})
+})
+
 controller.hears(['ogilvy'], 'message_received', function (bot, message) {
 	bot.startConversation(message,function(err,convo) {	
 		convo.say('MRM Worldwide is part of the McCann Erickson ad agencies group. This division is specialized in CRM communication with Nestlé, Gemey and Opel as their key clients');
@@ -181,28 +200,29 @@ controller.hears(['francais'], 'message_received', function (bot, message) {
 controller.on('facebook_postback', function (bot, message) {
   switch (message.payload) {
     case 'show_london':
+		bot.reply(message, {
+			attachment: {
+			  type: 'image',
+			  payload: {
+			    url: 'http://thecoffeevine.com/wp-content/uploads/2016/04/london.jpg'
+			  }
+			}
+		})    
 		bot.startConversation(message,function(err,convo) {	
-		  convo.say({
-		    attachment: {
-		      type: 'image',
-		      payload: {
-		        url: 'http://thecoffeevine.com/wp-content/uploads/2016/04/london.jpg'
-		      }
-		    }
-		  })
 		  convo.say('He was hired by Criteo in 2014 as a Senior Technical Solutions Engineer. In 2016 he left the company to be hired at SmartFocus as a Presales Consultant')
+		  convo.say('Ask me about his experience in Criteo or SmartFocus')
 		});
         break
     case 'show_paris':
+		bot.reply(message, {
+			attachment: {
+			  type: 'image',
+			  payload: {
+			    url: 'https://c8.staticflickr.com/8/7003/6672156239_01bde2b717_b.jpg'
+			  }
+			}
+		})
 		bot.startConversation(message,function(err,convo) {	
-		  convo.say({
-		    attachment: {
-		      type: 'image',
-		      payload: {
-		        url: 'https://c8.staticflickr.com/8/7003/6672156239_01bde2b717_b.jpg'
-		      }
-		    }
-		  })
 		  convo.say('Tim began his career in 2006 with 6 months of internship as a project manager at MRM Worldwide')
 		  convo.say('...then at TBWA from 2006 to 2008 as a Project Manager and Technical Project Manager')
 		  convo.say('...and ~1 year at Ogilvy again as a Technical Project Manager.')
@@ -331,7 +351,7 @@ controller.hears(['uptime', 'identify yourself', 'who are you', 'what is your na
 
 
 controller.on('message_received', function(bot, message) {
-    bot.reply(message, 'Try: `what is my name` or `structured` or `call me captain`');
+    bot.reply(message, 'Ask me about Tim: his experience, education, hobbies...');
     return false;
 });
 
