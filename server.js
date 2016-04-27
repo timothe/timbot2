@@ -153,7 +153,7 @@ controller.hears(['hobbies'], 'message_received', function (bot, message) {
 })
 
 controller.hears(['tv series'], 'message_received', function (bot, message) {
-	bot.reply(message, 'Tim is following too much to dive into details in here, but you can have a look there: http://www.betaseries.com/membre/timothe/series')
+	bot.reply(message, 'Tim is following too many shows to dive into details here, but you can have a look there: http://www.betaseries.com/membre/timothe/series')
 })
 
 controller.hears(['emea'], 'message_received', function (bot, message) {
