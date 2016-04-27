@@ -77,7 +77,7 @@ controller.hears(['his experience', 'tim\'s experience', 'work'], 'message_recei
 	})
 })
 
-controller.hears(['contact me', 'get in touch', 'email', 'message'], 'message_received', function (bot, message) {
+controller.hears(['contact me', 'in touch', 'email', 'message'], 'message_received', function (bot, message) {
 	bot.reply(message, 'Do you want to get in touch? Drop him a line on timothe.leroy@gmail.com')
 })
 
@@ -95,7 +95,6 @@ controller.hears(['tbwa'], 'message_received', function (bot, message) {
 		convo.say('He did a lot of different things there: concept design, development, technical consulting')
 		convo.say('...and worked on great clients: ADIDAS, Arcelor Mittal, BNP Paribas, Michelin, McDonald’s, Amnesty, SNCF...')
 	});
-
 });
 
 controller.hears(['milky'], 'message_received', function (bot, message) {
@@ -140,7 +139,7 @@ controller.hears(['education', 'school', 'masters', 'degree'], 'message_received
 		convo.say('Tim studied at the University of Toulon (France) and graduated with a Master’s Degree \"Internet and Multimedia Engineering\" in 2006')
 		convo.say('This curriculum is proposing a variety of classes for the professions around internet: Development, Design, Marketing, Law, etc. but also filming: Writing, Photography, Storyboard, Montage, etc')
 		convo.say('The objective is to become a skilful Project Manager')
-	});
+	})
 })
 
 controller.hears(['hobbies'], 'message_received', function (bot, message) {
@@ -150,7 +149,21 @@ controller.hears(['hobbies'], 'message_received', function (bot, message) {
 		convo.say('Sports-wise, he\'s regularly practicing Muay Thai after years of the a classic jogging / weight lifting routine')
 		convo.say('He\'s a big fan of cars and motorbikes too and got the chance to participate in some races in the past')
 		convo.say('Well, among other cool stories ;)')
-	});
+	})
+})
+
+controller.hears(['tv series'], 'message_received', function (bot, message) {
+	bot.startConversation(message,function(err,convo) {	
+		bot.reply(message, 'Tim is following too much to dive into details in here, but you can have a look there')
+		bot.reply(message, {
+			attachment: {
+			  type: 'web_url',
+			  payload: {
+			    url: 'http://www.betaseries.com/membre/timothe/series'
+			  }
+			}
+		})
+	})
 })
 
 controller.hears(['emea'], 'message_received', function (bot, message) {
