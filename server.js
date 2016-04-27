@@ -57,8 +57,8 @@ controller.hears(['his life', 'tim\'s life', 'his universe'], 'message_received'
 });
 
 controller.hears(['his experience', 'tim\'s experience', 'work'], 'message_received', function (bot, message) {
-	bot.reply('He worked 8 years in Paris in agencies and 2 years in London in tech companies')
-	bot.reply({
+	bot.reply(message, 'He worked 8 years in Paris in agencies and 2 years in London in tech companies')
+	bot.reply(message, {
 		attachment: {
 		  type: 'template',
 		  payload: {
