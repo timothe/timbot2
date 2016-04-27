@@ -36,20 +36,16 @@ controller.hears(['hello'], 'message_received', function (bot, message) {
                 if (!user) {
                     user = {
                         id: message.user,
-                    };
+                    }
                 }
                 user.welcomed = true;
 	            controller.storage.users.save(user, function(err, id) {
-	                bot.reply(message, 'Hi! I\'m Timbot. I\'m Tim\'s programmed alter-ego :) I\'m here to tell you more about him.')
+	                bot.reply(message, 'Hi! I\'m Timbot. I\'m Tim\'s programmed alter-ego :) I\'m here to tell you more about him')
 	                bot.reply(message, 'What do you want to know?')
-	            });
-            });
+	            })
+            })
         }
-    });	
-});
-
-controller.hears(['bye', 'goodbye', 'adios'], 'message_received', function (bot, message) {
-	bot.reply(message, 'All right, see ya!')
+    })
 })
 
 controller.hears(['his life', 'tim\'s life', 'his universe'], 'message_received', function (bot, message) {
@@ -82,22 +78,7 @@ controller.hears(['his experience', 'tim\'s experience', 'work'], 'message_recei
 })
 
 controller.hears(['contact me', 'get in touch', 'email', 'message'], 'message_received', function (bot, message) {
-	bot.reply(message, {
-		attachment: {
-		  type: 'template',
-		  payload: {
-		    template_type: 'button',
-		    text: 'Do you want to get in touch? Click on the button below and drop him a line',
-		    buttons: [
-		      {
-		        type: 'web_url',
-		        title: 'timothe.leroy@gmail.com',
-		        url: 'mailto:timothe.leroy@gmail.com'
-		      }
-		    ]
-		  }
-		}
-	})
+	bot.reply(message, 'Do you want to get in touch? Drop him a line on timothe.leroy@gmail.com')
 })
 
 controller.hears(['ogilvy'], 'message_received', function (bot, message) {
@@ -130,7 +111,7 @@ controller.hears(['milky'], 'message_received', function (bot, message) {
 controller.hears(['mustang'], 'message_received', function (bot, message) {
 	bot.startConversation(message,function(err,convo) {	
 		convo.say('After selling his Milky shares, Tim immediately created Mustang Interactive, another web developement agency')
-		convo.say('Some clients followed him in the deal, and the company grew \'till 2014, when Tim decided to close it and move to London')	
+		convo.say('Some clients followed him in the deal, and the company grew \'till 2014, when Tim decided to close it and move to London')
 	})
 })
 
@@ -188,7 +169,7 @@ controller.hears(['suck'], 'message_received', function (bot, message) {
 	bot.reply(message, 'I think you have me confused with Vacuum-bot')
 })
 
-controller.hears(['fuck', 'twat', 'cunt', 'bastard', 'dick', 'pute', 'putain'], 'message_received', function (bot, message) {
+controller.hears(['fuck', 'shit', 'twat', 'cunt', 'bastard', 'dick', 'pute', 'putain'], 'message_received', function (bot, message) {
 	bot.reply(message, '-_-')
 })
 
@@ -200,6 +181,7 @@ controller.hears(['francais'], 'message_received', function (bot, message) {
 controller.on('facebook_postback', function (bot, message) {
   switch (message.payload) {
     case 'show_london':
+/*
 		bot.reply(message, {
 			attachment: {
 			  type: 'image',
@@ -208,12 +190,14 @@ controller.on('facebook_postback', function (bot, message) {
 			  }
 			}
 		})    
+*/
 		bot.startConversation(message,function(err,convo) {	
 		  convo.say('He was hired by Criteo in 2014 as a Senior Technical Solutions Engineer. In 2016 he left the company to be hired at SmartFocus as a Presales Consultant')
 		  convo.say('Ask me about his experience in Criteo or SmartFocus')
 		});
         break
     case 'show_paris':
+/*
 		bot.reply(message, {
 			attachment: {
 			  type: 'image',
@@ -222,6 +206,7 @@ controller.on('facebook_postback', function (bot, message) {
 			  }
 			}
 		})
+*/
 		bot.startConversation(message,function(err,convo) {	
 		  convo.say('Tim began his career in 2006 with 6 months of internship as a project manager at MRM Worldwide')
 		  convo.say('...then at TBWA from 2006 to 2008 as a Project Manager and Technical Project Manager')
@@ -243,9 +228,9 @@ controller.hears(['call me (.*)', 'my name is (.*)'], 'message_received', functi
         user.name = name;
         controller.storage.users.save(user, function(err, id) {
             bot.reply(message, 'Got it. I will call you ' + user.name + ' from now on.');
-        });
-    });
-});
+        })
+    })
+})
 
 controller.hears(['what is my name', 'who am i'], 'message_received', function(bot, message) {
     controller.storage.users.get(message.user, function(err, user) {
@@ -280,11 +265,8 @@ controller.hears(['what is my name', 'who am i'], 'message_received', function(b
                                 }
                             }
                         ]);
-
                         convo.next();
-
                     }, {'key': 'nickname'}); // store the results in a field called nickname
-
                     convo.on('end', function(convo) {
                         if (convo.status == 'completed') {
                             bot.reply(message, 'OK! I will update my dossier...');
@@ -300,24 +282,19 @@ controller.hears(['what is my name', 'who am i'], 'message_received', function(b
                                     bot.reply(message, 'Got it. I will call you ' + user.name + ' from now on.');
                                 });
                             });
-
-
-
                         } else {
                             // this happens if the conversation ended prematurely for some reason
                             bot.reply(message, 'OK, nevermind!');
                         }
                     });
                 }
-            });
+            })
         }
-    });
-});
+    })
+})
 
 controller.hears(['shutdown'], 'message_received', function(bot, message) {
-
     bot.startConversation(message, function(err, convo) {
-
         convo.ask('Are you sure you want me to shutdown?', [
         {
             pattern: bot.utterances.yes,
@@ -337,24 +314,32 @@ controller.hears(['shutdown'], 'message_received', function(bot, message) {
                 convo.next();
             }
         }
-        ]);
-    });
-});
+        ])
+    })
+})
 
+controller.hears(['knock'], 'message_received', function (bot, message) {
+	bot.reply(message, 'I AM THE ONE WHO KNOCKS')
+})
 
-controller.hears(['uptime', 'identify yourself', 'who are you', 'what is your name'], 'message_received', function(bot, message) {
+controller.hears(['you are Timbot', 'you\'re Timbot'], 'message_received', function (bot, message) {
+	bot.reply(message, 'YOU\'RE GODDAMN RIGHT')
+})
+
+controller.hears(['uptime', 'identify yourself', 'are you', 'is your name'], 'message_received', function(bot, message) {
     var hostname = os.hostname();
-    var uptime = formatUptime(process.uptime());
-    bot.reply(message, ':|] I am a bot named Timbot. I have been running for ' + uptime + '.');
-});
+    var uptime = formatUptime(process.uptime())
+    bot.reply(message, ':|] I am a bot named Timbot. I have been running for ' + uptime + '.')
+})
 
-
+controller.hears(['bye', 'goodbye', 'adios'], 'message_received', function (bot, message) {
+	bot.reply(message, 'All right, see ya!')
+})
 
 controller.on('message_received', function(bot, message) {
     bot.reply(message, 'Ask me about Tim: his experience, education, hobbies...');
     return false;
-});
-
+})
 
 function formatUptime(uptime) {
     var unit = 'second';
